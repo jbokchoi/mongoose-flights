@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flights</title>
+    <link rel='stylesheet' href='/stylesheets/new.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+<body>
+    <h2>Flight Details</h2>
+    <nav>
+        <button onclick="location.href='/flights'">View All Flights <i class="fas fa-plane-departure"></i></button>
+    </nav>
+    <section id="show-details">
+        <div>Departure Details</div>
+        <div>Departure Airport:</div>
+        <div><%= flight.airport %></div>
+        <div>Airline:</div>
+        <div><%= flight.airline %></div>
+        <div>Flight Number:</div>
+        <div><%= flight.flightNo %></div>
+        <div>Departs:</div>
+        <div><%= flight.departs %></div>
+    </section>
+
+    <h2>Add Destination Details</h2>
+    <form id="add-destination" method="POST" 
+        action="/flights/<%= flight._id %>/destinations">
+        <label>Arrival Airport:</label>
+        <select name="airport">
+            <option value="AUS">AUS</option>
+            <option value="DAL">DAL</option>
+            <option value="LAX">LAX</option>
+            <option value="SEA">SEA</option>
+        </select>
+        </label>        
+        <label>Arrival Date and Time:</label>
+        <input type="datetime-local" name="arrival">
+        <input type="submit" id="submit-destination" value="Add Details">
+    </form>    
+
+    <% if (flight.destination.length) { %>
+        <section id ="show-destination">
+            <% flight.destination.forEach(function(des) { %>
+            <div>Destination Details</div>
+            <div>Arrival Airport:</div>
+            <div><%= des.airport %></div>
+            <div>Arrival Date and Time:</div>
+            <div><%= des.arrival %></div>
+            <% }); %>
+        </section>
+    <% } else { %>
+        <h5>No Destination Details Added Yet</h5>
+    <% } %>
+
+</body>
+</html>

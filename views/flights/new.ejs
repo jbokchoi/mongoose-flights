@@ -5,14 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Flights</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/new.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
 <body>
     <h2>Enter a New Flight</h2>
     <nav>
-        <button onclick="location.href='/flights'">View All Flights</button>
+        <button onclick="location.href='/flights'">View All Flights <i class="fas fa-plane-departure"></i></button>
     </nav>
     <form action="/flights" method="POST">
+        <label> Airport:
+            <select name="airport">
+                <option value="AUS">AUS</option>
+                <option value="DAL">DAL</option>
+                <option value="LAX">LAX</option>
+                <option value="SEA">SEA</option>
+            </select>
+        </label>
         <label> Airline:
             <select name="airline">
                 <option value="American">American</option>
@@ -26,7 +36,7 @@
         <label> Departs:
             <input type="datetime-local" name="departs">
         </label><br>
-        <input type="submit" value="Add Flight">
+        <input class="add" type="submit" value="Add Flight">
     </form>
 </body>
 </html>
