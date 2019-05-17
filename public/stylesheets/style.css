@@ -90,10 +90,17 @@ td, th {
   text-align: left;
 }
 
-a {
-  color: #00B7FF;
+.passed-flights {
+  color: #c42323;
 }
 
-.passed-flights {
-  color: red;
+#details {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5vmax;
+  letter-spacing: 1px;
+}
+
+#last {
+  background-color: #0a0a0a;
 }

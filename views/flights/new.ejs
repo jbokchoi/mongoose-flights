@@ -15,7 +15,7 @@
         <button onclick="location.href='/flights'">View All Flights <i class="fas fa-plane-departure"></i></button>
     </nav>
     <form action="/flights" method="POST">
-        <label> Airport:
+        <label id="airport"> Airport:
             <select name="airport">
                 <option value="AUS">AUS</option>
                 <option value="DAL">DAL</option>
@@ -23,19 +23,19 @@
                 <option value="SEA">SEA</option>
             </select>
         </label>
-        <label> Airline:
+        <label id="airline"> Airline:
             <select name="airline">
                 <option value="American">American</option>
                 <option value="Southwest">Southwest</option>
                 <option value="United">United</option>
             </select>
-        </label><br>
-        <label> Flight Number:
+        </label>
+        <label id="flightNo"> Flight Number:
             <input type="text" name="flightNo">
-        </label><br>
-        <label> Departs:
+        </label>
+        <label id="depart"> Departs:
             <input type="datetime-local" name="departs">
-        </label><br>
+        </label>
         <input class="add" type="submit" value="Add Flight">
     </form>
 </body>

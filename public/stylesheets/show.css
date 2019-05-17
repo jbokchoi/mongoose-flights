@@ -14,7 +14,7 @@ h2 {
     color: #272828;
     font-weight: 700;
     background-color: #e0ae2f;
-    width: 75%;
+    width: 95%;
     text-align: center;
     border: 5px double white;
     letter-spacing: 1px;
@@ -23,10 +23,10 @@ h2 {
 }
 
 nav {
-    margin-top: 10px;
+    margin: 10px 0 5px 0;
     padding: 4px 10px 4px 10px;
     background-color: #1c7230;
-    width: 65%;
+    width: 85%;
     text-align: left;
     letter-spacing: 1px;
 }
@@ -46,19 +46,46 @@ button {
     text-transform: uppercase
 }
 
-form {
+table {
+    border-collapse: collapse;
+    color: white;
+    border-spacing: 1rem;
+    width: 85%;
+    font-size: 1.5vmax;
+    letter-spacing: 1px;
+}
+
+tr:nth-child(even) {
+    background-color:#3b3c3f;
+}
+  
+tr:nth-child(odd) {
+    background-color:#272828;
+}
+  
+td, th {
+    border: 5px solid #0a0a0a;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+#add-des-details {
+    margin: 10px ;
+}
+
+#add-destination {
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto auto auto;
     grid-template-areas:
-        "airport airline"
-        "flightNo flightNo"
-        "depart depart"
-        "button empty";
+        "header header"
+        "airport city"
+        "arrival date"
+        "button button";
     grid-gap: 1rem;
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
-    width: 55%;
+    width: 80%;
     border: 1px solid white;
     background-color: #272828;
     justify-content: center;
@@ -66,20 +93,20 @@ form {
     color: white;
 }
 
-#airport {
+#arrival {
     grid-area: airport;
 }
 
-#airline {
-    grid-area: airline;
+#airport {
+    grid-area: city; 
 }
 
-#flightNo {
-    grid-area: flightNo;
+#arr-date {
+    grid-area: arrival; 
 }
 
-#depart {
-    grid-area: depart;
+#date {
+    grid-area: date; 
 }
 
 .add {
@@ -93,10 +120,38 @@ label {
 }
 
 .add {
-  background-color: #1c7230;
-  color: white;
-  border: 1px solid transparent;
-  padding: 5px;;
-  font-size: 1.5vmax;
-  text-transform: uppercase
+    background-color: #1c7230;
+    color: white;
+    border: 1px solid transparent;
+    padding: 5px;;
+    font-size: 1.5vmax;
+    text-transform: uppercase
+}
+
+h5  {
+    color: white;
+}
+
+#header {
+    background-color: #e0ae2f;
+    color: #272828
+}
+
+h3 {
+    color: white;
+    grid-area: header;
+    margin: 0;
+}
+
+#edit {
+    color: white;
+    background-color: transparent;
+    font-weight: bold;
+    border: 1px solid white;
+    border-radius: 0%;
+}
+
+#footer {
+    background-color:  #0a0a0a;
+    text-align: right;
 }

@@ -21,12 +21,14 @@
             <tr>
                 <th>Airline</th>
                 <th>Flight No.</th>
-                <th>Departs <button class="a-sort" onclick="<%-flights.sort(function(a, b) 
-                {return b.departs - a.departs});%>"><i class="far fa-caret-square-up"></i></button>
-                <button class="d-sort" onclick="<%-flights.sort(function(a, b) 
-                {return a.departs - b.departs});%>"><i class="far fa-caret-square-down"></i></button>
+                <th>Departs 
+                    <a class="a-sort" href="/flights" <%- flights.sort(function(a, b) 
+                    {return b.departs - a.departs});%> > <i class="far fa-caret-square-up"></i></a> 
+                    <a class="d-sort" href="/flights" <%- flights.sort(function(a, b) 
+                    {return a.departs - b.departs});%> > <i class="far fa-caret-square-down"></i></a>
                 </th>
-                <th></th>
+                </th>
+                <th id="last"></th>
             </tr>
         </thead>
         <tbody>
@@ -35,7 +37,7 @@
                     <td><%= flight.airline %></td>
                     <td><%= flight.flightNo %></td>
                     <td><%= flight.departs %></td>
-                    <td> <a href="/flights/<%= flight._id %>">DETAILS</a></td>
+                    <td> <a id="details" href="/flights/<%= flight._id %>">DETAILS</a></td>
                 </tr>
             <% }) %>
         </tbody>
