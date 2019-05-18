@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Flights</title>
     <link rel='stylesheet' href='/stylesheets/show.css' />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
+
 <body>
     <h2> Flight No. <%= flight.flightNo %> Details</h2>
     <nav>
         <button onclick="location.href='/flights'">View All Flights <i class="fas fa-plane"></i></button>
-        <button class="new-flight" onclick="location.href='/flights/new'"> Add New Flight <i class="fas fa-plane-departure"></i> </button>
-        <button class="new-ticket" onclick="location.href='/flights/<%= flight._id %>/tickets/new'"> Add New Ticket <i class="fas fa-ticket-alt"></i>
+        <button class="new-flight" onclick="location.href='/flights/new'"> Add New Flight <i
+                class="fas fa-plane-departure"></i> </button>
+        <button class="new-ticket" onclick="location.href='/flights/<%= flight._id %>/tickets/new'"> Add New Ticket <i
+                class="fas fa-ticket-alt"></i>
 
         </button>
     </nav>
@@ -51,17 +56,17 @@
             </tr>
         </thead>
         <tbody>
-        <% flight.tickets.forEach(function(ticket) { %>
+            <% flight.tickets.forEach(function(ticket) { %>
             <tr>
                 <td><%= ticket.seat %></td>
                 <td><%= ticket.price %></td>
             </tr>
-        <% }); %>
+            <% }); %>
         </tbody>
     </table>
 
     <% if (flight.destination.length) { %>
-        <table id ="show-destination">
+    <table id="show-destination">
         <thead>
             <tr>
                 <th id="header" colspan="2">Destination Details</th>
@@ -72,32 +77,32 @@
             </tr>
         </thead>
         <tbody>
-        <% flight.destination.forEach(function(des) { %>
-        <tr>
-            <td><%= des.airport %></td>
-            <td><%= des.arrival %></td>
-        </tr>
-        <% }); %>
+            <% flight.destination.forEach(function(des) { %>
+            <tr>
+                <td><%= des.airport %></td>
+                <td><%= des.arrival %></td>
+            </tr>
+            <% }); %>
         </tbody>
-        </table>
+    </table>
     <% } else { %>
-        <h5>No Destination Details Added Yet</h5>
+    <h5>No Destination Details Added Yet</h5>
     <% } %>
 
-    <form id="add-destination" method="POST" 
-        action="/flights/<%= flight._id %>/destinations">
+    <form id="add-destination" method="POST" action="/flights/<%= flight._id %>/destinations">
         <h3 id="add-des-details">Add Destination Details</h2>
-        <label id="arrival">Arrival Airport:</label>
-        <select id="airport" name="airport">
-            <option value="AUS">AUS</option>
-            <option value="DAL">DAL</option>
-            <option value="LAX">LAX</option>
-            <option value="SEA">SEA</option>
-        </select>       
-        <label id="arr-date">Arrival Date and Time:</label>
-        <input id="date" type="datetime-local" name="arrival">
-        <input type="submit" class="add" value="Add Details">
-    </form>    
+            <label id="arrival">Arrival Airport:</label>
+            <select id="airport" name="airport">
+                <option value="AUS">AUS</option>
+                <option value="DAL">DAL</option>
+                <option value="LAX">LAX</option>
+                <option value="SEA">SEA</option>
+            </select>
+            <label id="arr-date">Arrival Date and Time:</label>
+            <input id="date" type="datetime-local" name="arrival">
+            <input type="submit" class="add" value="Add Details">
+    </form>
 
 </body>
+
 </html>

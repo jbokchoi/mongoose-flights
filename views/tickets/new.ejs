@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Flights</title>
     <link rel='stylesheet' href='/stylesheets/new.css' />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
+
 <body>
-    <h2>Add a New Ticket</h2>
+    <h3>Add a New Ticket for Flight <%= flight.flightNo %></h3>
     <nav>
+        <button class="new-flight" onclick="location.href='/flights/<%= flight._id %>'"> Return to Flight <%= flight.flightNo %> 
+            <i class="fas fa-plane-departure"></i> </button>
         <button onclick="location.href='/flights'">View All Flights <i class="fas fa-plane"></i></button>
     </nav>
     <form action="/flights/<%= flightId %>" method="POST">
@@ -19,9 +24,10 @@
             <input name="seat" required pattern="[A-F][1-9]\d?">
         </label>
         <label id="price"> Price:
-                <input type="number" name="price">
+            <input type="number" name="price">
         </label>
         <input class="add" type="submit" value="Add Ticket">
     </form>
 </body>
+
 </html>

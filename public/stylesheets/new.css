@@ -8,7 +8,7 @@ body {
     background-color: #0a0a0a;
 }
 
-h2 {
+h2, h3 {
     margin: 0;
     padding: 5px;
     color: #272828;
@@ -18,7 +18,7 @@ h2 {
     text-align: center;
     border: 5px double white;
     letter-spacing: 1px;
-    font-size: 3vmax;
+    font-size: 2.5vmax;
     text-transform: uppercase
 }
 
@@ -54,7 +54,7 @@ form {
         "airport airline"
         "flightNo flightNo"
         "depart depart"
-        "button empty";
+        "button button";
     grid-gap: 1rem;
     padding: 20px;
     margin: 10px;
