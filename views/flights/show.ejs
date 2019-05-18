@@ -10,10 +10,13 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
 <body>
-    <h2>Flight Details</h2>
+    <h2> Flight No. <%= flight.flightNo %> Details</h2>
     <nav>
-        <button onclick="location.href='/flights'">View All Flights <i class="fas fa-plane-departure"></i></button>
+        <button onclick="location.href='/flights'">View All Flights <i class="fas fa-plane"></i></button>
         <button class="new-flight" onclick="location.href='/flights/new'"> Add New Flight <i class="fas fa-plane-departure"></i> </button>
+        <button class="new-ticket" onclick="location.href='/flights/<%= flight._id %>/tickets/new'"> Add New Ticket <i class="fas fa-ticket-alt"></i>
+
+        </button>
     </nav>
     <table id="show-details">
         <tr>
@@ -35,6 +38,26 @@
             <th>Departs:</th>
             <td><%= flight.departs %></td>
         </tr>
+    </table>
+
+    <table id="tickets">
+        <thead>
+            <tr>
+                <th id="header" colspan="3">Flight Details</th>
+            </tr>
+            <tr>
+                <th>Seat No.</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% flight.tickets.forEach(function(ticket) { %>
+            <tr>
+                <td><%= ticket.seat %></td>
+                <td><%= ticket.price %></td>
+            </tr>
+        <% }); %>
+        </tbody>
     </table>
 
     <% if (flight.destination.length) { %>
