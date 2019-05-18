@@ -43,7 +43,7 @@
     <table id="tickets">
         <thead>
             <tr>
-                <th id="header" colspan="3">Flight Details</th>
+                <th id="header" colspan="2">Tickets for Flight <%= flight.flightNo %></th>
             </tr>
             <tr>
                 <th>Seat No.</th>
@@ -62,19 +62,23 @@
 
     <% if (flight.destination.length) { %>
         <table id ="show-destination">
-            <% flight.destination.forEach(function(des) { %>
+        <thead>
+            <tr>
+                <th id="header" colspan="2">Destination Details</th>
+            </tr>
+            <tr>
+                <th>Arrival Airport:</th>
+                <th>Arrival:</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% flight.destination.forEach(function(des) { %>
         <tr>
-            <th id="header" colspan="2">Destination Details</th>
-        </tr>
-        <tr>
-            <th>Arrival Airport:</th>
             <td><%= des.airport %></td>
-        </tr>
-        <tr>
-            <th>Arrival:</th>
             <td><%= des.arrival %></td>
         </tr>
-            <% }); %>
+        <% }); %>
+        </tbody>
         </table>
     <% } else { %>
         <h5>No Destination Details Added Yet</h5>

@@ -16,18 +16,20 @@ module.exports = {
 
 function create(req, res) {
     var ticket = new Ticket(req.body);
-    console.log(ticket);
-
+    ticket.save(function(err) {
+        err ?
+        res.render('tickets/new') : 
     Flight.findById(req.params.id, function(e, flight) { 
         // console.log(e)
     flight.tickets.push(ticket);
-    console.log(flight.tickets);
-    ticket.save(function(err) {
-        err ?
-        res.render('tickets/new') : res.redirect(`/flights/${flight._id}`)
+        flight.save(function(err) {
+            err ?
+            res.render('tickets/new') : res.redirect(`/flights/${flight._id}`)
+            });
         });
     });
 }
+
 
 function newTicket(req, res) {
     var flightId = req.params.id;
