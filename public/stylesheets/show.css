@@ -155,3 +155,17 @@ h3 {
     background-color:  #0a0a0a;
     text-align: right;
 }
+
+#del-ticket-header, #del-ticket-body {
+    width: 30%;
+    text-align: center;
+}
+
+.delete-ticket {
+    text-align: center;
+}
+
+.hd {
+    background-color: #a5a29f;
+    color: #272828;
+}

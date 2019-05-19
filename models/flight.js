@@ -1,17 +1,17 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var destinationSchema = new Schema ({
+var destinationSchema = new Schema({
     airport: {
         type: String,
         enum: ["AUS", "DAL", "LAX", "SEA"]
-    }, 
+    },
     arrival: {
         type: Date,
     }
 });
 
-var flightSchema = new Schema ({
+var flightSchema = new Schema({
     airline: {
         type: String,
         enum: ["American", "United", "Southwest"]
@@ -32,8 +32,8 @@ var flightSchema = new Schema ({
     },
     destination: {
         type: [destinationSchema],
-    }, 
-    tickets: [{type: Schema.Types.ObjectId, ref: 'Ticket'}]
+    },
+    tickets: [{ type: Schema.Types.ObjectId, ref: 'Ticket' }]
 });
 
 

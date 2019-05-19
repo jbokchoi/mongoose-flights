@@ -45,25 +45,39 @@
         </tr>
     </table>
 
+    <% if (flight.tickets.length) { %>
     <table id="tickets">
         <thead>
             <tr>
-                <th id="header" colspan="2">Tickets for Flight <%= flight.flightNo %></th>
+                <th id="header" colspan="3">Tickets for Flight <%= flight.flightNo %></th>
             </tr>
             <tr>
-                <th>Seat No.</th>
-                <th>Price</th>
+                <th class="hd">Seat No.</th>
+                <th class="hd">Price</th>
+                <th class="hd" id="del-ticket-header">Delete Ticket</th>
             </tr>
         </thead>
         <tbody>
-            <% flight.tickets.forEach(function(ticket) { %>
+            <% flight.tickets.forEach(function(ticket, ticketId) { %>
             <tr>
                 <td><%= ticket.seat %></td>
                 <td><%= ticket.price %></td>
+                <td id="del-ticket-body">
+                    <form action="/flights/<%= flight._id %>/<%= ticket._id %>?_method=DELETE" class="delete-ticket"
+                        method="POST">
+                        <button type="submit">X</button>
+                    </form>
+                </td>
             </tr>
             <% }); %>
         </tbody>
     </table>
+    <% } else { %>
+        <h5>No Tickets Added Yet</h5>
+    <% } %>
+
+
+
 
     <% if (flight.destination.length) { %>
     <table id="show-destination">
@@ -72,8 +86,9 @@
                 <th id="header" colspan="2">Destination Details</th>
             </tr>
             <tr>
-                <th>Arrival Airport:</th>
-                <th>Arrival:</th>
+                <th class="hd">Arrival Airport</th>
+                <th class="hd">Arrival</th>
+                <!-- <th>Delete Arrival Info</th> -->
             </tr>
         </thead>
         <tbody>
@@ -81,6 +96,10 @@
             <tr>
                 <td><%= des.airport %></td>
                 <td><%= des.arrival %></td>
+                <!-- <td id="del-ticket-body">
+                    <form action="/flights/<%= flight._id %>?_method=DELETE" class="delete-ticket"
+                        method="POST">
+                        <button type="submit">X</button></td> -->
             </tr>
             <% }); %>
         </tbody>
@@ -93,10 +112,12 @@
         <h3 id="add-des-details">Add Destination Details</h2>
             <label id="arrival">Arrival Airport:</label>
             <select id="airport" name="airport">
-                <option value="AUS">AUS</option>
-                <option value="DAL">DAL</option>
-                <option value="LAX">LAX</option>
-                <option value="SEA">SEA</option>
+                <% flight.schema.path('airport').enumValues.forEach(function(a) { %>
+                <% if(flight.airport !== a) { %>
+                <% flight.destination.forEach(function(d) { %>
+                <% if(d.airport !== a) { %>
+                <option value="<%= a %>"><%= a %></option>
+                <% }})}}) %>
             </select>
             <label id="arr-date">Arrival Date and Time:</label>
             <input id="date" type="datetime-local" name="arrival">
