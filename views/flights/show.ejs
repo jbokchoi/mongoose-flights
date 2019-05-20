@@ -79,11 +79,11 @@
     <table id="show-destination">
         <thead>
             <tr>
-                <th id="header" colspan="2">Destination Details</th>
+                <th id="header" colspan="3">Destination Details</th>
             </tr>
             <tr>
                 <th class="hd">Arrival Airport</th>
-                <th class="hd">Arrival</th>
+                <th class="hd" colspan="2">Arrival</th>
             </tr>
         </thead>
         <tbody>
@@ -91,6 +91,10 @@
             <tr>
                 <td><%= des.airport %></td>
                 <td><%= des.arrival %></td>
+                <td><form action="/<%= flight._id %>/<%= des._id %>?_method=DELETE" class="delete-ticket"
+                    method="POST">
+                    <button type="submit">X</button></form>
+                </td>
             </tr>
             <% }); %>
         </tbody>
