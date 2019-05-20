@@ -53,8 +53,7 @@
             </tr>
             <tr>
                 <th class="hd">Seat No.</th>
-                <th class="hd">Price</th>
-                <th class="hd" id="del-ticket-header">Delete Ticket</th>
+                <th class="hd" colspan="2">Price</th>
             </tr>
         </thead>
         <tbody>
@@ -73,11 +72,8 @@
         </tbody>
     </table>
     <% } else { %>
-        <h5>No Tickets Added Yet</h5>
+    <h5>No Tickets Added Yet</h5>
     <% } %>
-
-
-
 
     <% if (flight.destination.length) { %>
     <table id="show-destination">
@@ -88,7 +84,6 @@
             <tr>
                 <th class="hd">Arrival Airport</th>
                 <th class="hd">Arrival</th>
-                <!-- <th>Delete Arrival Info</th> -->
             </tr>
         </thead>
         <tbody>
@@ -96,10 +91,6 @@
             <tr>
                 <td><%= des.airport %></td>
                 <td><%= des.arrival %></td>
-                <!-- <td id="del-ticket-body">
-                    <form action="/flights/<%= flight._id %>?_method=DELETE" class="delete-ticket"
-                        method="POST">
-                        <button type="submit">X</button></td> -->
             </tr>
             <% }); %>
         </tbody>
@@ -109,19 +100,18 @@
     <% } %>
 
     <form id="add-destination" method="POST" action="/flights/<%= flight._id %>/destinations">
-        <h3 id="add-des-details">Add Destination Details</h2>
-            <label id="arrival">Arrival Airport:</label>
-            <select id="airport" name="airport">
-                <% flight.schema.path('airport').enumValues.forEach(function(a) { %>
-                <% if(flight.airport !== a) { %>
-                <% flight.destination.forEach(function(d) { %>
-                <% if(d.airport !== a) { %>
-                <option value="<%= a %>"><%= a %></option>
-                <% }})}}) %>
-            </select>
-            <label id="arr-date">Arrival Date and Time:</label>
-            <input id="date" type="datetime-local" name="arrival">
-            <input type="submit" class="add" value="Add Details">
+        <h3 id="add-des-details">Add Destination Details</h3>
+        <label id="arrival">Arrival Airport:</label>
+        <select id="airport" name="airport">
+            <% flight.schema.path('airport').enumValues.forEach(function(a) { %>
+            <% if(flight.airport !== a) { %>
+            <% console.log(a) %>
+            <option value="<%= a %>"><%= a %></option>
+            <% }}) %>
+        </select>
+        <label id="arr-date">Arrival Date and Time:</label>
+        <input id="date" type="datetime-local" name="arrival">
+        <input type="submit" class="add" value="Add Details">
     </form>
 
 </body>

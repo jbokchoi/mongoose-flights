@@ -36,7 +36,7 @@ nav {
     font-size: 1.5vmax;
 }
 
-button {
+button, .add {
     background-color: #1c7230;
     color: white;
     border: 1px solid transparent;
@@ -119,15 +119,6 @@ label {
     padding: 5px;
 }
 
-.add {
-    background-color: #1c7230;
-    color: white;
-    border: 1px solid transparent;
-    padding: 5px;;
-    font-size: 1.5vmax;
-    text-transform: uppercase
-}
-
 h5  {
     color: white;
 }
@@ -143,21 +134,8 @@ h3 {
     margin: 0;
 }
 
-#edit {
-    color: white;
-    background-color: transparent;
-    font-weight: bold;
-    border: 1px solid white;
-    border-radius: 0%;
-}
-
-#footer {
-    background-color:  #0a0a0a;
-    text-align: right;
-}
-
-#del-ticket-header, #del-ticket-body {
-    width: 30%;
+#del-ticket-body {
+    width: 10%;
     text-align: center;
 }
 

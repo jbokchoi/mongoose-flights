@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <title>Flights</title>
 </head>
+
 <body>
     <header>
         <h1>All Flights</h1>
     </header>
-        <nav>
-            <button class="new-flight" onclick="location.href='/flights/new'"> Add New Flight <i class="fas fa-plane-departure"></i> </button>
-        </nav>
+    <nav>
+        <button class="new-flight" onclick="location.href='/flights/new'"> Add New Flight <i
+                class="fas fa-plane-departure"></i> </button>
+    </nav>
     <table>
         <thead>
             <tr>
-                <th>Airline <br><a href="/flights?sortBy=airline&sortDir=1"><i class="far fa-caret-square-up"></i></a>
+                <td colspan="5" class="decor"></td>
+            </tr>
+            <tr>
+                <th class="hd">Airline <br><a href="/flights?sortBy=airline&sortDir=1"><i
+                            class="far fa-caret-square-up"></i></a>
                     <a href="/flights?sortBy=airline&sortDir=-1"> <i class="far fa-caret-square-down"></i></a></th>
-                <th>Flight No. <br><a href="/flights?sortBy=flightNo&sortDir=1"><i class="far fa-caret-square-up"></i></a> <a href="/flights?sortBy=flightNo&sortDir=-1"><i class="far fa-caret-square-down"></i></a></th>
-                <th>Departs <br><a href="/flights?sortBy=departs&sortDir=1"><i class="far fa-caret-square-up"></i></a> <a href="/flights?sortBy=departs&sortDir=-1"><i class="far fa-caret-square-down"></i></a></th>
-                <th id="last"></th>
+                <th class="hd">Flight No. <br><a href="/flights?sortBy=flightNo&sortDir=1"><i
+                            class="far fa-caret-square-up"></i></a> <a href="/flights?sortBy=flightNo&sortDir=-1"><i
+                            class="far fa-caret-square-down"></i></a></th>
+                <th class="hd" colspan="3">Departs <a href="/flights?sortBy=departs&sortDir=1"><i
+                            class="far fa-caret-square-up"></i></a> <a href="/flights?sortBy=departs&sortDir=-1"><i
+                            class="far fa-caret-square-down"></i></a></th>
             </tr>
         </thead>
         <tbody>
             <% flights.forEach(function(flight) { %>
-                <tr <%- flight.departs < new Date() ? 'class="passed-flights"' : '' %>>
-                    <td><%= flight.airline %></td>
-                    <td><%= flight.flightNo %></td>
-                    <td><%= flight.departs %></td>
-                    <td> <a id="details" href="/flights/<%= flight._id %>">DETAILS</a></td>
-                </tr>
+            <tr <%- flight.departs < new Date() ? 'class="passed-flights"' : '' %>>
+                <td><%= flight.airline %></td>
+                <td><%= flight.flightNo %></td>
+                <td><%= flight.departs %></td>
+                <td> <a id="details" href="/flights/<%= flight._id %>">DETAILS</a></td>
+                <td>
+                    <form action="/flights/<%= flight._id %>?_method=DELETE" class="delete-flight" method="POST">
+                        <button type="submit">X</button>
+                    </form>
+                </td>
+            </tr>
             <% }) %>
         </tbody>
     </table>
 </body>
+
 </html>

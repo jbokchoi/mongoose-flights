@@ -6,8 +6,8 @@ module.exports = {
     show,
     new: newFlight,
     create,
+    deleteFlight,
     delete: deleteTicket,
-    // deleteDestination,
 }
 
 function index(req, res) {
@@ -22,28 +22,25 @@ function index(req, res) {
 
 function show(req, res) {
     Flight.findById(req.params.id)
-    .populate('tickets').exec(function(err, flight) {
-        Ticket.find({_id: {$nin: flight.tickets}})
-        .exec(function(err, tickets) {    
-        res.render('flights/show', {flight, tickets});
-        })
-    })
+        .populate('tickets').exec(function (err, flight) {
+            Ticket.find({ _id: { $nin: flight.tickets } })
+                .exec(function (err, tickets) {
+                    res.render('flights/show', { flight, tickets });
+                });
+        });
 }
 
-function deleteTicket(req, res) {
-    Ticket.findByIdAndDelete(req.params.ticketId, function(err) {
-        res.redirect(`/flights/${req.params.flightId}`);
+function deleteFlight(req, res) {
+    Flight.findByIdAndDelete(req.params.id, function (err) {
+        res.redirect('/flights');
     });
 }
 
-// function deleteDestination(req, res) {
-//     Flight.findById(req.params.id, function(err) {
-//         flight.destination.id(_id).remove();
-//         flight.save(function(err) {
-//             res.redirect(`/flights/${req.params.flightId}`);
-//         });
-//     });
-// }
+function deleteTicket(req, res) {
+    Ticket.findByIdAndDelete(req.params.ticketId, function (err) {
+        res.redirect(`/flights/${req.params.flightId}`);
+    });
+}
 
 function newFlight(req, res) {
     res.render('flights/new');
@@ -51,11 +48,11 @@ function newFlight(req, res) {
 
 function create(req, res) {
     if (req.body.departs === '') {
-        req.body.departs = undefined 
+        req.body.departs = undefined
     }
     var flight = new Flight(req.body);
-    flight.save(function(err) {
-        if (err) return res.render('flights/new');
-        res.redirect(`/flights/${flight._id}`);
+    flight.save(function (err) {
+        err ?
+            res.render('flights/new') : res.redirect(`/flights/${flight._id}`)
     });
 }

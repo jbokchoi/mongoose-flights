@@ -15,7 +15,8 @@
 <body>
     <h3>Add a New Ticket for Flight <%= flight.flightNo %></h3>
     <nav>
-        <button class="new-flight" onclick="location.href='/flights/<%= flight._id %>'"> Return to Flight <%= flight.flightNo %> 
+        <button class="new-flight" onclick="location.href='/flights/<%= flight._id %>'"> Return to Flight
+            <%= flight.flightNo %>
             <i class="fas fa-plane-departure"></i> </button>
         <button onclick="location.href='/flights'">View All Flights <i class="fas fa-plane"></i></button>
     </nav>

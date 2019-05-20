@@ -37,7 +37,7 @@ nav {
   font-size: 1.5vmax;
 }
 
-.new-flight {
+.new-flight, button {
   background-color: #1c7230;
   color: white;
   border: 1px solid transparent;
@@ -56,25 +56,20 @@ table {
   letter-spacing: 1px;
 }
 
-thead {
+.decor {
+  background-color: #e0ae2f;
+}
+
+.hd {
+  background-color: #a5a29f;
+  color: #272828;
   text-transform: uppercase
 }
 
-.a-sort, .d-sort {
-  background-color: transparent;
-  border: transparent;
-}
-
-.fa-caret-square-up {
+.fa-caret-square-up, .fa-caret-square-down {
   font-size: 1.5vmax;
-  color: white;
+  color: #272828;
 }
-
-.fa-caret-square-down {
-  font-size: 1.5vmax;
-  color: white;
-}
-
 
 tr:nth-child(even) {
   background-color:#3b3c3f;
@@ -99,8 +94,4 @@ td, th {
   color: white;
   font-size: 1.5vmax;
   letter-spacing: 1px;
-}
-
-#last {
-  background-color: #0a0a0a;
 }
